@@ -1,0 +1,501 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usetheme[]{Copenhagen}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdfauthor={Tobias SAVARY \textbar{} Camille BAUVAIS},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\setbeamertemplate{footline}
+{
+\leavevmode%
+\hbox{%
+\begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,left]{author in head/foot}%
+  \begin{center}
+    \insertnavigation{\paperwidth}
+  \end{center}
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+\usebeamerfont{title in head/foot}\insertshorttitle
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+\insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+\end{beamercolorbox}}%
+\vskip0pt%
+}
+
+
+
+\title{Aide à la réalisation de prêts bancaires}
+\author{Tobias SAVARY \textbar{} Camille BAUVAIS}
+\date{January 03, 2023}
+
+\begin{document}
+\frame{\titlepage}
+
+\hypertarget{aide-uxe0-la-ruxe9alisation-de-pruxeats-bancaires}{%
+\section{Aide à la réalisation de prêts
+bancaires}\label{aide-uxe0-la-ruxe9alisation-de-pruxeats-bancaires}}
+
+\begin{frame}{Problématique}
+\protect\hypertarget{probluxe9matique}{}
+\begin{enumerate}
+\tightlist
+\item
+  Un prêt est-il faisable ?
+\item
+  Quel sera le montant à rembourser chaque mois ?
+\item
+  Quelle sera la durée du prêt ?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Sujet}
+\protect\hypertarget{sujet}{}
+\begin{block}{Aide à la réalisation de prêts bancaires}
+\protect\hypertarget{aide-uxe0-la-ruxe9alisation-de-pruxeats-bancaires-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Faisabilité du prêt
+\item
+  Montant du remboursement
+\item
+  Durée du remboursement
+\end{itemize}
+\end{block}
+
+\begin{block}{Types de prêt}
+\protect\hypertarget{types-de-pruxeat}{}
+\begin{itemize}
+\tightlist
+\item
+  le prêt immobilier
+\item
+  le prêt étudiant
+\item
+  le crédit à la consommation
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Source d'expertise}
+\protect\hypertarget{source-dexpertise}{}
+\begin{block}{Création de la base de règles}
+\protect\hypertarget{cruxe9ation-de-la-base-de-ruxe8gles}{}
+Recherche sur des sites de banques ou sur des simulateurs préexistants.
+
+\textbf{Prêt immobilier} :
+
+\begin{itemize}
+\tightlist
+\item
+  edito.seloger.com\\
+\item
+  www.pretto.fr
+\end{itemize}
+
+\textbf{Prêt étudiant} :
+
+\begin{itemize}
+\tightlist
+\item
+  www.banquepopulaire.fr
+\end{itemize}
+
+\textbf{Crédit à la consommation} :
+
+\begin{itemize}
+\tightlist
+\item
+  www.nos-economies.fr
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Source d'expertise}
+\protect\hypertarget{source-dexpertise-1}{}
+\begin{block}{Caractéristiques pour chaque type de prêt}
+\protect\hypertarget{caractuxe9ristiques-pour-chaque-type-de-pruxeat}{}
+\begin{itemize}
+\tightlist
+\item
+  taux
+\item
+  montant min
+\item
+  montant max
+\item
+  durée min
+\item
+  durée max
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Base de règles}
+\protect\hypertarget{base-de-ruxe8gles}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\KeywordTok{setq}\NormalTok{ *bdr*}
+
+\NormalTok{\textquotesingle{}(( R1 ((}\KeywordTok{eq}\NormalTok{ profession CDI)) (}\KeywordTok{eq}\NormalTok{ situation stable))}
+\NormalTok{( R2 ((}\KeywordTok{eq}\NormalTok{ profession fonctionnaire)) (}\KeywordTok{eq}\NormalTok{ situation stable))}
+\NormalTok{( R3 ((}\OperatorTok{\textgreater{}=}\NormalTok{ revenu }\DecValTok{5000}\NormalTok{)) (}\KeywordTok{eq}\NormalTok{ situation stable))}
+\NormalTok{( R4 ((}\KeywordTok{eq}\NormalTok{ nationalite France)(}\OperatorTok{\textgreater{}=}\NormalTok{ age }\DecValTok{18}\NormalTok{)) }
+\NormalTok{        (}\KeywordTok{eq}\NormalTok{ statut Francais))}
+\NormalTok{( R5 ((}\KeywordTok{eq}\NormalTok{ lieuResidence France) (}\OperatorTok{\textgreater{}=}\NormalTok{ duree\_sejour }\DecValTok{5}\NormalTok{) }
+\NormalTok{    (}\OperatorTok{\textgreater{}=}\NormalTok{ age }\DecValTok{18}\NormalTok{)) (}\KeywordTok{eq}\NormalTok{ statut Francais))}
+\NormalTok{( R6 ((}\KeywordTok{eq}\NormalTok{ profession etudiant) (}\KeywordTok{eq}\NormalTok{ statut Francais) }
+\NormalTok{    (}\OperatorTok{\textless{}=}\NormalTok{ age }\DecValTok{28}\NormalTok{)) (}\KeywordTok{eq}\NormalTok{ StatutEtu valide))}
+\NormalTok{( R7 ((}\OperatorTok{\textgreater{}}\NormalTok{ age }\DecValTok{65}\NormalTok{) (}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{7}\NormalTok{)) }
+\NormalTok{        (}\KeywordTok{eq}\NormalTok{ etatPret refuse))}
+\NormalTok{( R8 ((}\OperatorTok{\textgreater{}}\NormalTok{ age }\DecValTok{65}\NormalTok{) (}\KeywordTok{eq}\NormalTok{ assurance non)) (}\KeywordTok{eq}\NormalTok{ etatPret refuse))}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Base de règles}
+\protect\hypertarget{base-de-ruxe8gles-1}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{( R9 ((}\KeywordTok{eq}\NormalTok{ situation stable)(}\OperatorTok{\textless{}}\NormalTok{ endettement }\DecValTok{35}\NormalTok{)) }
+\NormalTok{        (}\KeywordTok{eq}\NormalTok{ typePret credit))}
+\NormalTok{( R10 ((}\OperatorTok{\textgreater{}=}\NormalTok{ critereApport }\DecValTok{1}\NormalTok{) (}\KeywordTok{eq}\NormalTok{ typePret credit) }
+\NormalTok{    (}\KeywordTok{eq}\NormalTok{ statut Francais)) (}\KeywordTok{eq}\NormalTok{ typePret Immobilier))}
+\NormalTok{( R11 ((}\KeywordTok{eq}\NormalTok{ typePret Immobilier)(}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{27}\NormalTok{) }
+\NormalTok{    (}\OperatorTok{\textgreater{}=}\NormalTok{ duree\_pret }\DecValTok{5}\NormalTok{) (}\OperatorTok{\textgreater{}=}\NormalTok{ montant }\DecValTok{50000}\NormalTok{)) }
+\NormalTok{        (}\KeywordTok{eq}\NormalTok{ etatPret accepte))}
+\NormalTok{( R12 ((}\KeywordTok{eq}\NormalTok{ typePret Immobilier)) (}\OperatorTok{\textgreater{}=}\NormalTok{ montant }\DecValTok{50000}\NormalTok{))}
+\NormalTok{( R13 ((}\KeywordTok{eq}\NormalTok{ typePret Immobilier)) (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{27}\NormalTok{))}
+\NormalTok{( R14 ((}\KeywordTok{eq}\NormalTok{ typePret Immobilier)) (}\OperatorTok{\textgreater{}=}\NormalTok{ duree\_pret }\DecValTok{5}\NormalTok{))}
+\NormalTok{( R15 ((}\KeywordTok{eq}\NormalTok{ typePret Immobilier) (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{10}\NormalTok{)) }
+\NormalTok{        (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{2.40}\NormalTok{))}
+\NormalTok{( R16 ((}\KeywordTok{eq}\NormalTok{ typePret Immobilier) (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{15}\NormalTok{)}
+\NormalTok{        (}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{10}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{2.53}\NormalTok{))}
+\NormalTok{( R17 ((}\KeywordTok{eq}\NormalTok{ typePret Immobilier) (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{20}\NormalTok{)}
+\NormalTok{        (}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{15}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{2.64}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Base de règles}
+\protect\hypertarget{base-de-ruxe8gles-2}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{( R18 ((}\KeywordTok{eq}\NormalTok{ typePret Immobilier) (}\OperatorTok{\textgreater{}=}\NormalTok{ duree\_pret }\DecValTok{20}\NormalTok{)) }
+\NormalTok{        (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{2.81}\NormalTok{))}
+\NormalTok{( R19 ((}\KeywordTok{eq}\NormalTok{ statutEtu valide)) (}\KeywordTok{eq}\NormalTok{ typePret Etudiant))}
+\NormalTok{( R20 ((}\KeywordTok{eq}\NormalTok{ typePret Etudiant) (}\OperatorTok{\textgreater{}=}\NormalTok{ montant }\DecValTok{1500}\NormalTok{) }
+\NormalTok{   (}\OperatorTok{\textless{}=}\NormalTok{ montant }\DecValTok{30000}\NormalTok{) (}\OperatorTok{\textgreater{}=}\NormalTok{ duree\_pret }\DecValTok{2}\NormalTok{) (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{10}\NormalTok{)) }
+\NormalTok{        (}\KeywordTok{eq}\NormalTok{ etatPret accepte))}
+\NormalTok{( R21 ((}\KeywordTok{eq}\NormalTok{ typePret Etudiant)) (}\OperatorTok{\textless{}=}\NormalTok{ montant }\DecValTok{30000}\NormalTok{))}
+\NormalTok{( R22 ((}\KeywordTok{eq}\NormalTok{ typePret Etudiant)) (}\OperatorTok{\textgreater{}=}\NormalTok{ montant }\DecValTok{1500}\NormalTok{))}
+\NormalTok{( R23 ((}\KeywordTok{eq}\NormalTok{ typePret Etudiant)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{2.00}\NormalTok{))}
+\NormalTok{( R24 ((}\KeywordTok{eq}\NormalTok{ typePret Etudiant)) (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{10}\NormalTok{))}
+\NormalTok{( R25 ((}\KeywordTok{eq}\NormalTok{ typePret Etudiant)) (}\OperatorTok{\textgreater{}=}\NormalTok{ duree\_pret }\DecValTok{2}\NormalTok{))}
+\NormalTok{( R26 ((}\KeywordTok{eq}\NormalTok{ typePret credit)(}\KeywordTok{eq}\NormalTok{ statut Francais)) }
+\NormalTok{    (}\KeywordTok{eq}\NormalTok{ typePret consommation))}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Base de règles}
+\protect\hypertarget{base-de-ruxe8gles-3}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{( R27 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\OperatorTok{\textless{}}\NormalTok{ montant }\DecValTok{50000}\NormalTok{)}
+\NormalTok{    (}\OperatorTok{\textgreater{}=}\NormalTok{ duree\_pret }\DecValTok{1}\NormalTok{)(}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{6}\NormalTok{))}
+\NormalTok{     (}\KeywordTok{eq}\NormalTok{ etatPret accepte))}
+\NormalTok{( R28 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)) (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{6}\NormalTok{))}
+\NormalTok{( R29 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)) (}\OperatorTok{\textgreater{}=}\NormalTok{ duree\_pret }\DecValTok{1}\NormalTok{))}
+\NormalTok{( R30 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)) (}\OperatorTok{\textless{}}\NormalTok{ montant }\DecValTok{50000}\NormalTok{))}
+\NormalTok{( R31 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso auto)}
+\NormalTok{        (}\OperatorTok{=}\NormalTok{ duree\_pret }\DecValTok{1}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{0.51}\NormalTok{))}
+\NormalTok{( R32 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso auto)}
+\NormalTok{        (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{2}\NormalTok{)(}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{1}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{1.51}\NormalTok{))}
+\NormalTok{( R33 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso auto)}
+\NormalTok{        (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{3}\NormalTok{)(}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{2}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{1.91}\NormalTok{))}
+\NormalTok{( R34 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso auto)}
+\NormalTok{        (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{5}\NormalTok{)(}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{3}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{2.41}\NormalTok{))}
+\NormalTok{( R35 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso auto)}
+\NormalTok{        (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{6}\NormalTok{)(}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{5}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{3.41}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Base de règles}
+\protect\hypertarget{base-de-ruxe8gles-4}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{( R36 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso travaux)}
+\NormalTok{        (}\OperatorTok{=}\NormalTok{ duree\_pret }\DecValTok{1}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{0.91}\NormalTok{))}
+\NormalTok{( R37 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso travaux)}
+\NormalTok{        (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{2}\NormalTok{)(}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{1}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{2.01}\NormalTok{))}
+\NormalTok{( R38 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso travaux)}
+\NormalTok{        (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{3}\NormalTok{)(}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{2}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{2.41}\NormalTok{))}
+\NormalTok{( R39 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso travaux)}
+\NormalTok{        (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{4}\NormalTok{)(}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{3}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{2.80}\NormalTok{))}
+\NormalTok{( R40 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso travaux)}
+\NormalTok{        (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{5}\NormalTok{)(}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{4}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{3.00}\NormalTok{))}
+\NormalTok{( R41 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso travaux)}
+\NormalTok{        (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{6}\NormalTok{)(}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{5}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{3.40}\NormalTok{))}
+\NormalTok{( R42 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso personnel)}
+\NormalTok{        (}\OperatorTok{=}\NormalTok{ duree\_pret }\DecValTok{1}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{0.51}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Base de règles}
+\protect\hypertarget{base-de-ruxe8gles-5}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{( R43 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso personnel)}
+\NormalTok{        (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{2}\NormalTok{)(}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{1}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{1.51}\NormalTok{))}
+\NormalTok{( R44 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso personnel)}
+\NormalTok{        (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{3}\NormalTok{)(}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{2}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{1.91}\NormalTok{))}
+\NormalTok{( R45 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso personnel)}
+\NormalTok{        (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{4}\NormalTok{)(}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{3}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{2.80}\NormalTok{))}
+\NormalTok{( R46 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso personnel)}
+\NormalTok{        (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{5}\NormalTok{)(}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{4}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{2.41}\NormalTok{))}
+\NormalTok{( R47 ((}\KeywordTok{eq}\NormalTok{ typePret consommation)(}\KeywordTok{eq}\NormalTok{ typeConso personnel)}
+\NormalTok{        (}\OperatorTok{\textless{}=}\NormalTok{ duree\_pret }\DecValTok{6}\NormalTok{)(}\OperatorTok{\textgreater{}}\NormalTok{ duree\_pret }\DecValTok{5}\NormalTok{)) (}\OperatorTok{=}\NormalTok{ taux }\FloatTok{4.51}\NormalTok{))}
+\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{Moteurs utilisés}
+\protect\hypertarget{moteurs-utilisuxe9s}{}
+\begin{block}{Faisabilité du prêt}
+\protect\hypertarget{faisabilituxe9-du-pruxeat}{}
+\begin{itemize}
+\tightlist
+\item
+  Chaînage arrière en profondeur avec (eq etatPret refuse)
+\item
+  Chaînage arrière en profondeur avec (eq etatPret accepte)
+\end{itemize}
+\end{block}
+
+\begin{block}{Montant du remboursement}
+\protect\hypertarget{montant-du-remboursement}{}
+\begin{itemize}
+\tightlist
+\item
+  chaînage avant (récupération du taux)
+\item
+  Calcul interne
+\end{itemize}
+\end{block}
+
+\begin{block}{Durée du remboursement}
+\protect\hypertarget{duruxe9e-du-remboursement}{}
+\begin{itemize}
+\tightlist
+\item
+  chaînage avant (récupération du taux)
+\item
+  Calcul interne
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Démo pour fpret}
+\protect\hypertarget{duxe9mo-pour-fpret}{}
+Pierre\\
+24 ans, Français\\
+Métier : ingénieur (CDI)\\
+Revenus : 3000/Mois
+
+Veut faire un prêt immobilier de 70 000€ en 22 ans.\\
+Il dispose d'une assurance et de 30 000€ d'apport.
+\end{frame}
+
+\begin{frame}{Démo pour calculmensualité}
+\protect\hypertarget{duxe9mo-pour-calculmensualituxe9}{}
+Julie\\
+19 ans, Française\\
+Etudiante
+
+Elle souhaite emprunter 10 000€ pour une durée de 7 ans.\\
+Elle se demande quel est le montant qu'elle aura à rembourser chaque
+mois.
+\end{frame}
+
+\begin{frame}{Démo pour dureepret}
+\protect\hypertarget{duxe9mo-pour-dureepret}{}
+Philippe veut faire un crédit à la consommation afin de rénover sa
+cuisine.\\
+Il souhaite emprunter 5 000€ tout en remboursant seulement 250€ par
+mois.\\
+Quelle doit-être la durée de son prêt ?\\
+\end{frame}
+
+\begin{frame}{Conclusion}
+\protect\hypertarget{conclusion}{}
+\textbf{Aide à la réalisation de prêts bancaires}
+
+\begin{block}{Moteurs}
+\protect\hypertarget{moteurs}{}
+\begin{itemize}
+\tightlist
+\item
+  Chainage avant
+\item
+  Chainage arrière
+\end{itemize}
+\end{block}
+
+\begin{block}{Fonctionnalités}
+\protect\hypertarget{fonctionnalituxe9s}{}
+\begin{itemize}
+\tightlist
+\item
+  Faisabilité du prêt
+\item
+  Montant du remboursement
+\item
+  Durée du remboursement
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Merci}
+\protect\hypertarget{merci}{}
+\includegraphics{img/merci.png}
+\end{frame}
+
+\end{document}
